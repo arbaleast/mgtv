@@ -4,6 +4,7 @@ import sys # 接受外部传参
 
 # 发送HTTP请求并获取JSON数据
 def get_live_url(channel_id):
+    print(channel_id)
     url = f'http://mpp.liveapi.mgtv.com/v1/epg/turnplay/getLivePlayUrlMPP?version=PCweb_1.0&platform=1&buss_id=2000001&channel_id={channel_id}'
     response = requests.get(url)
     data = response.json()
@@ -27,7 +28,7 @@ channel_id = sys.argv[1]
 filename = sys.argv[2]
 
 live_url = get_live_url(channel_id)
-print(live_url, channel_id)
+print(live_url)
 
 if live_url:
     update_single_m3u8_file(live_url, filename)
