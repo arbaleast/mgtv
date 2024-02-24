@@ -33,4 +33,4 @@ if live_url:
     # print('文件 {filename} 的URL已更新为：')
     print(f'{live_url}\n')
 else:
-    print('未能获取到直播URL，请检查网络或参数设置。')
+    print('未能获取到直播URL, 请检查网络或参数设置。')
