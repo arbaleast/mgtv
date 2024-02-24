@@ -1,0 +1,30 @@
+name: Extract URL from JSON
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # 每天UTC时间 00:00 触发
+  push:
+    branches:
+      - main
+
+jobs:
+  extract-url:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install requests
+
+    - name: Extract URL
+      run: |
+        python generate_mgtv_m3u8.py
