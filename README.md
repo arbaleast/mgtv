@@ -15,17 +15,32 @@ flv:http://mpp.liveapi.mgtv.com/v1/epg/turnplay/getLivePlayUrlMPP?version=PCweb_
 
 
 湖南经视 id=280
+
 湖南都市 id=346
+
 湖南电视剧 id=484
+
 湖南公共 id=261
+
 湖南国际 id=229
+
 湖南娱乐 id=344
+
 快乐购 id=267
+
 茶频道 id=578
+
 金鹰纪实 id=316
+
 金鹰卡通 id=287
+
 快乐垂钓 id=218
+
 先锋乒羽 id=329
+
 长沙新闻 id=269
+
 长沙政法 id=254
+
 长沙女性 id=230
+
