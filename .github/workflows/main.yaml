@@ -1,6 +1,10 @@
 name: Extract URL from JSON
 
 on:
+  workflow_dispatch:
+    inputs:
+      triggle:
+        description: 'triggle'
   schedule:
     - cron: '0 0 * * *' # 每天UTC时间 00:00 触发
   push:

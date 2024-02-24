@@ -119,7 +119,7 @@ def generate_live_stream_urls(stream_info_list):
         filename = stream_info.get("filename")
         # 调用另一个脚本，传入 tvg-id 参数
         process = subprocess.Popen(
-            ["python3", "src/utils/update_url.py", tvg_id, filename],
+            ["python", "src/utils/update_url.py", tvg_id, filename],
             stdout=subprocess.PIPE,
         )
         output, error = process.communicate()
