@@ -27,10 +27,11 @@ channel_id = sys.argv[1]
 filename = sys.argv[2]
 
 live_url = get_live_url(channel_id)
+print(live_url)
 
 if live_url:
     update_single_m3u8_file(live_url, filename)
     # print('文件 {filename} 的URL已更新为：')
-    print(f'{live_url}\n')
+    # print(f'{live_url}\n')
 else:
     print('未能获取到直播URL, 请检查网络或参数设置。')
