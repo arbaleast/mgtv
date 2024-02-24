@@ -27,7 +27,7 @@ channel_id = sys.argv[1]
 filename = sys.argv[2]
 
 live_url = get_live_url(channel_id)
-print(live_url)
+print(live_url, channel_id)
 
 if live_url:
     update_single_m3u8_file(live_url, filename)
