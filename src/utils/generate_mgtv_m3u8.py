@@ -10,8 +10,7 @@ def generate_m3u8_stream_with_info(urls, info_list):
         tvg_id = info.get("tvg-id", "")
         tvg_name = info.get("tvg-name", "")
         tvg_logo = info.get("tvg-logo", "")
-        group_title = info.get("group_title", "")
-        m3u8_content += f'#EXTINF:-1 tvg-id="{tvg_id}" tvg-name="{tvg_name}" tvg-logo="{tvg_logo}" group-title="\"{tvg_name}\",{group_title}"\n{url}\n'
+        m3u8_content += f'#EXTINF:-1 tvg-id="{tvg_id}" tvg-name="{tvg_name}" tvg-logo="{tvg_logo}" group-title=\"湖南\",{tvg_name} \n{url}\n'
 
     with open("mgtv.m3u", "w") as file:
         file.write(m3u8_content)
