@@ -13,6 +13,7 @@ m3u8:http://mpp.liveapi.mgtv.com/v1/epg/turnplay/getLivePlayUrlMPP?version=PCweb
 
 flv:http://mpp.liveapi.mgtv.com/v1/epg/turnplay/getLivePlayUrlMPP?version=PCweb_1.0&platform=4&buss_id=2000001&channel_id=id
 
+
 湖南经视 id=280
 湖南都市 id=346
 湖南电视剧 id=484
