@@ -27,4 +27,4 @@ jobs:
 
     - name: Extract URL
       run: |
-        python generate_mgtv_m3u8.py
+        python src/utils/generate_mgtv_m3u8.py
