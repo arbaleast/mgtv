@@ -10,6 +10,7 @@
 **订阅地址：** `https://mirror.ghproxy.com/https://raw.githubusercontent.com/arbaleast/mgtv/main/mgtv.m3u`
 
 m3u8:https://gh-proxy.org/https://github.com/arbaleast/mgtv/blob/main/mgtv.m3u
+
 flv:http://mpp.liveapi.mgtv.com/v1/epg/turnplay/getLivePlayUrlMPP?version=PCweb_1.0&platform=4&buss_id=2000001&channel_id=id
 
 ```text
