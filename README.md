@@ -1,32 +1,75 @@
-<img align="right" width="300" height="180" src="https://cdn.jsdelivr.net/gh/wanglindl/TVlogo@main/img/Hunan.png">
+# 🍋 芒果 TV 直播源
 
-# 🍋 芒果 TV
+> **仅供个人学习与研究使用，请于 24 小时内删除。**
+> 所有直播源均来自芒果 TV 公开接口，本项目不对内容的合法性、准确性做任何保证。
+> 如需观看，请通过芒果 TV 官方途径。
 
-欢迎来到 Meroser 的直播源仓库-芒果 TV🎉
+本仓库维护一套湖南地方频道的直播订阅地址（m3u 格式），用于 IPTV 相关工具订阅。
 
-🎈**标清、流畅**的直播观看体验 🎈
-😋 直播源来自|**芒果官方**
+## 订阅地址
 
-**订阅地址：** `https://mirror.ghproxy.com/https://raw.githubusercontent.com/arbaleast/mgtv/main/mgtv.m3u`
-
-m3u8:https://gh-proxy.org/https://github.com/arbaleast/mgtv/blob/main/mgtv.m3u
-
-flv:http://mpp.liveapi.mgtv.com/v1/epg/turnplay/getLivePlayUrlMPP?version=PCweb_1.0&platform=4&buss_id=2000001&channel_id=id
-
-```text
-湖南经视 id=280
-湖南都市 id=346
-湖南电视剧 id=484
-湖南公共 id=261
-湖南国际 id=229
-湖南娱乐 id=344
-快乐购 id=267
-茶频道 id=578
-金鹰纪实 id=316
-金鹰卡通 id=287
-快乐垂钓 id=218
-先锋乒羽 id=329
-长沙新闻 id=269
-长沙政法 id=254
-长沙女性 id=230
 ```
+https://raw.githubusercontent.com/arbaleast/mgtv/main/mgtv.m3u
+```
+
+## 支持的频道
+
+| 频道 | 状态 | logo |
+|------|------|------|
+| 湖南经视 | ✅ 正常 | ✓ |
+| 湖南都市 | ✅ 正常 | ✓ |
+| 湖南电视剧 | ✅ 正常 | ✓ |
+| 湖南公共 | ✅ 正常 | ✓ |
+| 湖南国际 | ✅ 正常 | ✓ |
+| 湖南娱乐 | ✅ 正常 | ✓ |
+| 快乐购 | ✅ 正常 | ✓ |
+| 茶频道 | ❌ 已下线 | — |
+| 金鹰纪实 | ✅ 正常 | ✓ |
+| 金鹰卡通 | ✅ 正常 | ✓ |
+| 快乐垂钓 | ✅ 正常 | ✓ |
+| 先锋乒羽 | ❌ 已下线 | — |
+| 长沙新闻 | ✅ 正常 | ✓ |
+| 长沙政法 | ✅ 正常 | ✓ |
+| 长沙女性 | ✅ 正常 | ✓ |
+
+## 技术说明
+
+- **数据来源**：芒果 TV 公开 API（`mpp.liveapi.mgtv.com`）
+- **文件格式**：M3U（支持 IPTV 软件直接订阅）
+- **更新方式**：GitHub Actions 每日北京时间 08:00 自动刷新
+- **协议**：HTTP-FLV（大多数 IPTV 软件均支持）
+
+## 本地使用
+
+```bash
+# 安装依赖
+pip install -r requirements.txt
+
+# 运行
+python -m src.fetcher
+```
+
+## 项目结构
+
+```
+src/
+├── __init__.py
+├── channels.json       # 频道映射表
+├── config.py          # 全局配置（API 端点等）
+├── fetcher.py         # 并发获取直播 URL
+└── m3u8_generator.py # 生成 m3u 播放列表
+
+m3u8/                  # 各频道独立 m3u8 文件
+mgtv.m3u               # 聚合订阅文件
+```
+
+## 免责声明
+
+1. 本项目仅作为技术研究用途，不对任何使用行为负责
+2. 直播源地址的有效性受芒果 TV 官方策略影响，可能随时失效
+3. 本项目与芒果 TV 官方无任何关联，请通过官方途径支持正版内容
+4. 使用本仓库内容产生的任何版权问题，由使用者自行承担
+
+## License
+
+[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)

@@ -1,0 +1,40 @@
+name: Update MGTV Live URLs
+
+on:
+  # 每天北京时间 08:00 自动运行
+  schedule:
+    - cron: "0 0 * * *"
+  # 手动触发
+  workflow_dispatch:
+  # 代码推送后也触发
+  push:
+    branches:
+      - main
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Fetch live URLs
+        run: python -m src.fetcher
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add mgtv.m3u m3u8/
+          git diff --cached --quiet \
+            || (git commit -m "chore: update live URLs $(date -u '+%Y-%m-%dT%H:%M:%SZ')" \
+            && git push)

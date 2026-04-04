@@ -1,0 +1,19 @@
+{
+  "channels": [
+    {"channel_id": "280", "name": "湖南经视",   "logo": "https://cdn.jsdelivr.net/gh/arbaleast/mgtv@main/logo/hnjs.png"},
+    {"channel_id": "346", "name": "湖南都市",   "logo": "https://cdn.jsdelivr.net/gh/arbaleast/mgtv@main/logo/hnds.png"},
+    {"channel_id": "484", "name": "湖南电视剧", "logo": "https://cdn.jsdelivr.net/gh/arbaleast/mgtv@main/logo/hndsj.png"},
+    {"channel_id": "261", "name": "湖南公共",   "logo": "https://cdn.jsdelivr.net/gh/arbaleast/mgtv@main/logo/hngg.png"},
+    {"channel_id": "229", "name": "湖南国际",   "logo": "https://cdn.jsdelivr.net/gh/arbaleast/mgtv@main/logo/hngj.png"},
+    {"channel_id": "344", "name": "湖南娱乐",   "logo": "https://cdn.jsdelivr.net/gh/arbaleast/mgtv@main/logo/hnyl.png"},
+    {"channel_id": "267", "name": "快乐购",    "logo": "https://cdn.jsdelivr.net/gh/arbaleast/mgtv@main/logo/hnklg.png"},
+    {"channel_id": "578", "name": "茶频道",    "logo": "https://cdn.jsdelivr.net/gh/arbaleast/mgtv@main/logo/cpd.png", "offline": true},
+    {"channel_id": "316", "name": "金鹰纪实",  "logo": "https://cdn.jsdelivr.net/gh/arbaleast/mgtv@main/logo/jyjs.png"},
+    {"channel_id": "287", "name": "金鹰卡通",  "logo": "https://cdn.jsdelivr.net/gh/arbaleast/mgtv@main/logo/jykt.png"},
+    {"channel_id": "218", "name": "快乐垂钓",  "logo": "https://cdn.jsdelivr.net/gh/arbaleast/mgtv@main/logo/klcd.png"},
+    {"channel_id": "329", "name": "先锋乒羽",  "logo": "https://cdn.jsdelivr.net/gh/arbaleast/mgtv@main/logo/xfpy.png", "offline": true},
+    {"channel_id": "269", "name": "长沙新闻",  "logo": "https://cdn.jsdelivr.net/gh/arbaleast/mgtv@main/logo/csxw.png"},
+    {"channel_id": "254", "name": "长沙政法",  "logo": "https://cdn.jsdelivr.net/gh/arbaleast/mgtv@main/logo/cszf.png"},
+    {"channel_id": "230", "name": "长沙女性",  "logo": "https://cdn.jsdelivr.net/gh/arbaleast/mgtv@main/logo/csnx.png"}
+  ]
+}
