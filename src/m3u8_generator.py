@@ -6,10 +6,7 @@ from pathlib import Path
 logger = logging.getLogger(__name__)
 
 # M3U 头部，指向 EPG XML
-M3U_HEADER = (
-    '#EXTM3U x-tvg-url="https://mirror.ghproxy.com/'
-    'https://raw.githubusercontent.com/arbaleast/mgtv/main/mgtv.xml"\n'
-)
+M3U_HEADER = "#EXTM3U\n"
 
 
 def sanitize(text: str) -> str:

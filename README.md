@@ -4,11 +4,10 @@
 
 ## 订阅地址
 
-```
-https://mirror.ghproxy.com/https://raw.githubusercontent.com/arbaleast/mgtv/main/mgtv.m3u
-```
-
-国内网络建议使用镜像加速地址。
+| 地址 | 适用场景 |
+|------|---------|
+| `https://ghproxy.com/https://raw.githubusercontent.com/arbaleast/mgtv/main/mgtv.m3u` | 国内加速 |
+| `https://cdn.jsdelivr.net/gh/arbaleast/mgtv@main/mgtv.m3u` | 全球加速（jsDelivr CDN）|
 
 ## 技术方案
 
