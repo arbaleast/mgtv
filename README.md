@@ -1,75 +1,43 @@
 # 🍋 芒果 TV 直播源
 
-> **仅供个人学习与研究使用，请于 24 小时内删除。**
-> 所有直播源均来自芒果 TV 公开接口，本项目不对内容的合法性、准确性做任何保证。
-> 如需观看，请通过芒果 TV 官方途径。
-
-本仓库维护一套湖南地方频道的直播订阅地址（m3u 格式），用于 IPTV 相关工具订阅。
+湖南地方频道 m3u 订阅文件。
 
 ## 订阅地址
 
 ```
-https://raw.githubusercontent.com/arbaleast/mgtv/main/mgtv.m3u
+https://mirror.ghproxy.com/https://raw.githubusercontent.com/arbaleast/mgtv/main/mgtv.m3u
 ```
 
-## 支持的频道
+镜像加速，适合国内网络。
 
-| 频道 | 状态 | logo |
-|------|------|------|
-| 湖南经视 | ✅ 正常 | ✓ |
-| 湖南都市 | ✅ 正常 | ✓ |
-| 湖南电视剧 | ✅ 正常 | ✓ |
-| 湖南公共 | ✅ 正常 | ✓ |
-| 湖南国际 | ✅ 正常 | ✓ |
-| 湖南娱乐 | ✅ 正常 | ✓ |
-| 快乐购 | ✅ 正常 | ✓ |
-| 茶频道 | ❌ 已下线 | — |
-| 金鹰纪实 | ✅ 正常 | ✓ |
-| 金鹰卡通 | ✅ 正常 | ✓ |
-| 快乐垂钓 | ✅ 正常 | ✓ |
-| 先锋乒羽 | ❌ 已下线 | — |
-| 长沙新闻 | ✅ 正常 | ✓ |
-| 长沙政法 | ✅ 正常 | ✓ |
-| 长沙女性 | ✅ 正常 | ✓ |
+## 技术方案
 
-## 技术说明
-
-- **数据来源**：芒果 TV 公开 API（`mpp.liveapi.mgtv.com`）
-- **文件格式**：M3U（支持 IPTV 软件直接订阅）
-- **更新方式**：GitHub Actions 每日北京时间 08:00 自动刷新
-- **协议**：HTTP-FLV（大多数 IPTV 软件均支持）
-
-## 本地使用
-
-```bash
-# 安装依赖
-pip install -r requirements.txt
-
-# 运行
-python -m src.fetcher
-```
+| 技术 | 说明 |
+|------|------|
+| **asyncio + aiohttp** | 并发请求，13 频道 ~500ms |
+| **GitHub Actions** | 每日 UTC 0:00（北京时间 08:00）自动刷新 |
+| **M3U + FLV** | HTTP-FLV 流，兼容大多数 IPTV 软件 |
 
 ## 项目结构
 
 ```
 src/
-├── __init__.py
+├── fetcher.py          # 并发获取直播 URL
+├── m3u8_generator.py  # 生成 m3u 播放列表
 ├── channels.json       # 频道映射表
-├── config.py          # 全局配置（API 端点等）
-├── fetcher.py         # 并发获取直播 URL
-└── m3u8_generator.py # 生成 m3u 播放列表
-
-m3u8/                  # 各频道独立 m3u8 文件
-mgtv.m3u               # 聚合订阅文件
+└── config.py          # 全局配置
 ```
 
-## 免责声明
+## 本地使用
 
-1. 本项目仅作为技术研究用途，不对任何使用行为负责
-2. 直播源地址的有效性受芒果 TV 官方策略影响，可能随时失效
-3. 本项目与芒果 TV 官方无任何关联，请通过官方途径支持正版内容
-4. 使用本仓库内容产生的任何版权问题，由使用者自行承担
+```bash
+pip install -r requirements.txt
+python -m src.fetcher
+```
 
-## License
+## 参考
 
-[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+- [HLS.js](https://github.com/video-dev/hls.js)
+- [IETF HTTP Live Streaming](https://datatracker.ietf.org/doc/html/draft-pantos-hls-rfc8216bis)
+- [Nuxt SSR](https://nuxt.com/docs/getting-started/introduction)
+- [aiohttp](https://docs.aiohttp.org/)
