@@ -17,14 +17,6 @@ https://placeholder.example.com/live/267.flv
 https://placeholder.example.com/live/316.flv
 #EXTINF:-1 tvg-id="287" tvg-name="金鹰卡通" tvg-logo="https://cdn.jsdelivr.net/gh/arbaleast/mgtv@main/logo/jykt.png" group-title="湖南",金鹰卡通
 https://placeholder.example.com/live/287.flv
-#EXTINF:-1 tvg-id="218" tvg-name="快乐垂钓" tvg-logo="https://cdn.jsdelivr.net/gh/arbaleast/mgtv@main/logo/klcd.png" group-title="湖南",快乐垂钓
-https://placeholder.example.com/live/218.flv
-#EXTINF:-1 tvg-id="269" tvg-name="长沙新闻" tvg-logo="https://cdn.jsdelivr.net/gh/arbaleast/mgtv@main/logo/csxw.png" group-title="湖南",长沙新闻
-https://placeholder.example.com/live/269.flv
-#EXTINF:-1 tvg-id="254" tvg-name="长沙政法" tvg-logo="https://cdn.jsdelivr.net/gh/arbaleast/mgtv@main/logo/cszf.png" group-title="湖南",长沙政法
-https://placeholder.example.com/live/254.flv
-#EXTINF:-1 tvg-id="230" tvg-name="长沙女性" tvg-logo="https://cdn.jsdelivr.net/gh/arbaleast/mgtv@main/logo/csnx.png" group-title="湖南",长沙女性
-https://placeholder.example.com/live/230.flv
 #EXTINF:-1 tvg-id="cctv1" tvg-name="CCTV-1 综合" tvg-logo="https://cdn.jsdelivr.net/gh/arbaleast/mgtv@main/logo/cctv1.png" group-title="CCTV",CCTV-1 综合
 https://placeholder.example.com/live/cctv1.flv
 #EXTINF:-1 tvg-id="cctv2" tvg-name="CCTV-2 财经" tvg-logo="https://cdn.jsdelivr.net/gh/arbaleast/mgtv@main/logo/cctv2.png" group-title="CCTV",CCTV-2 财经
