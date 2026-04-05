@@ -15,7 +15,7 @@ set -e
 cd "$(dirname "$0")"
 
 echo "[*] 安装依赖..."
-pip install -q -r requirements.txt
+pip install -q -r requirements.txt 2>/dev/null
 
 echo "[*] 启动 mgtv server..."
 python -m src.server
