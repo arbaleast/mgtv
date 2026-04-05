@@ -1,25 +1,20 @@
-"""全局配置。
+"""全局配置 — Pydantic Settings."""
+from pathlib import Path
 
-所有敏感信息从环境变量读取，不硬编码在代码中。
-"""
-import os
+from pydantic import BaseModel
 
-# 旧 API 端点（主方案）
-OLD_API_BASE = "http://mpp.liveapi.mgtv.com/v1/epg/turnplay/getLivePlayUrlMPP"
 
-# 新 API 端点（备用，待激活）
-NEW_API_BASE = "https://pwlp.bz.mgtv.com/v1/live/source"
-NEW_API_SECRET = os.getenv("MGTV_CLIENT_SECRET", "")
+class Settings(BaseModel):
+    """应用全局配置。"""
 
-# 并发请求超时（秒）
-REQUEST_TIMEOUT = 10
+    server_host: str = "0.0.0.0"
+    server_port: int = 8080
+    fetch_interval_minutes: int = 15
+    tunnel_domain: str = ""  # 运行时由 tunnel.py 写入
 
-# User-Agent
-HEADERS = {
-    "User-Agent": (
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-        "AppleWebKit/537.36 (KHTML, like Gecko) "
-        "Chrome/120.0.0.0 Safari/537.36"
-    ),
-    "Referer": "https://www.mgtv.com/",
-}
+    @property
+    def channels_file(self) -> Path:
+        return Path(__file__).parent / "channels.json"
+
+
+settings = Settings()
