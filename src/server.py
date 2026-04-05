@@ -1,5 +1,6 @@
 """mgtv proxy server 启动入口。"""
 import asyncio
+import json
 import logging
 import signal
 from pathlib import Path
@@ -24,7 +25,6 @@ def load_channels() -> list[dict]:
     if not settings.channels_file.exists():
         logger.error("[!] channels.json 不存在: %s", settings.channels_file)
         return []
-    import json
     with open(settings.channels_file, encoding="utf-8") as f:
         data = json.load(f)
     return [c for c in data.get("channels", []) if not c.get("offline")]
@@ -53,7 +53,10 @@ async def periodic_refresh(client: MgtvClient, tunnel_domain: str, interval_minu
     """定时刷新任务。"""
     while True:
         await asyncio.sleep(interval_minutes * 60)
-        await fetch_and_update(client, tunnel_domain)
+        try:
+            await fetch_and_update(client, tunnel_domain)
+        except Exception as e:
+            logger.error("定时刷新失败: %s", e)
 
 
 async def main():
@@ -64,7 +67,7 @@ async def main():
 
     # 2. 启动 cloudflared tunnel
     logger.info("启动 cloudflared tunnel -> localhost:%d", settings.server_port)
-    _, tunnel_domain = await start_tunnel(settings.server_port)
+    tunnel_process, tunnel_domain = await start_tunnel(settings.server_port)
     logger.info("=" * 50)
     logger.info("公网访问地址: https://%s", tunnel_domain)
     logger.info("本地访问地址: http://localhost:%d", settings.server_port)
@@ -98,6 +101,11 @@ async def main():
     await stop_event.wait()
     logger.info("关闭服务...")
     refresh_task.cancel()
+    try:
+        await refresh_task
+    except asyncio.CancelledError:
+        pass
+    tunnel_process.terminate()
     await runner.cleanup()
 
 
