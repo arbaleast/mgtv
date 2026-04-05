@@ -28,7 +28,7 @@ def generate_mgtv_m3u(results: list[ChannelResult], tunnel_domain: str = "") -> 
             f"#EXTINF:-1 tvg-id=\"{r.channel_id}\" "
             f'tvg-name="{r.name}" '
             f'tvg-logo="{r.logo}" '
-            f'group-title="湖南",{r.name}\n'
+            f'group-title="{r.group}",{r.name}\n'
         )
         lines.append(f"{live_url}\n")
     return "".join(lines)

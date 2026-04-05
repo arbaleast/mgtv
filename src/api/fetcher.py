@@ -38,6 +38,7 @@ class ChannelResult:
     url: str = ""
     ok: bool = False
     error: str = ""
+    group: str = "湖南"
 
 
 def _parse_response(data: dict, channel: dict) -> ChannelResult:
@@ -45,6 +46,7 @@ def _parse_response(data: dict, channel: dict) -> ChannelResult:
     errno = data.get("errno")
     msg = data.get("msg", "")
 
+    group = channel.get("group", "湖南")
     if errno == "0" or data.get("code") == 0:
         url = data.get("data", {}).get("url", "")
         if url:
@@ -54,6 +56,7 @@ def _parse_response(data: dict, channel: dict) -> ChannelResult:
                 logo=channel.get("logo", ""),
                 url=url,
                 ok=True,
+                group=group,
             )
         return ChannelResult(
             channel_id=channel["channel_id"],
@@ -61,6 +64,7 @@ def _parse_response(data: dict, channel: dict) -> ChannelResult:
             logo=channel.get("logo", ""),
             ok=False,
             error="返回数据中无 url 字段",
+            group=group,
         )
 
     if errno == "2040114" or "下线" in msg:
@@ -70,6 +74,7 @@ def _parse_response(data: dict, channel: dict) -> ChannelResult:
             logo=channel.get("logo", ""),
             ok=False,
             error="该机位已下线",
+            group=group,
         )
 
     return ChannelResult(
@@ -78,6 +83,7 @@ def _parse_response(data: dict, channel: dict) -> ChannelResult:
         logo=channel.get("logo", ""),
         ok=False,
         error=msg or "未知错误",
+        group=group,
     )
 
 
@@ -115,6 +121,7 @@ async def fetch_single(session: aiohttp.ClientSession, channel: dict) -> Channel
             logo=channel.get("logo", ""),
             ok=False,
             error="请求超时",
+            group=channel.get("group", "湖南"),
         )
     except Exception as e:
         return ChannelResult(
@@ -123,6 +130,7 @@ async def fetch_single(session: aiohttp.ClientSession, channel: dict) -> Channel
             logo=channel.get("logo", ""),
             ok=False,
             error=str(e),
+            group=channel.get("group", "湖南"),
         )
 
 
