@@ -37,11 +37,11 @@ def generate_mgtv_m3u(results: list[ChannelResult], tunnel_domain: str = "") -> 
 class M3uGenerator:
     """m3u 播放列表生成器。"""
 
-    def generate(self, results: list[ChannelResult], base_url: str) -> str:
+    def generate(self, results: list[ChannelResult], tunnel_domain: str) -> str:
         """生成 m3u 文本。"""
-        return generate_mgtv_m3u(results, base_url)
+        return generate_mgtv_m3u(results, tunnel_domain)
 
-    def generate_file(self, results: list[ChannelResult], base_url: str, output_path: "Path") -> None:
+    def generate_file(self, results: list[ChannelResult], tunnel_domain: str, output_path: "Path") -> None:
         """生成并写入 m3u 文件。"""
-        content = self.generate(results, base_url)
+        content = self.generate(results, tunnel_domain)
         output_path.write_text(content, encoding="utf-8")
