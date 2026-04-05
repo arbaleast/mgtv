@@ -1,7 +1,7 @@
 """Tests for src.m3u_generator."""
 import pytest
-from src.m3u_generator import generate_live_url, generate_mgtv_m3u
-from src.fetcher import ChannelResult
+from src.generator.m3u import generate_live_url, generate_mgtv_m3u
+from src.api.fetcher import ChannelResult
 
 
 def test_generate_live_url_with_tunnel():

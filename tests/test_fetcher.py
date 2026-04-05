@@ -1,7 +1,7 @@
 """Tests for src.fetcher."""
 import pytest
 from unittest.mock import AsyncMock, MagicMock
-from src.fetcher import _parse_response, fetch_single
+from src.api.fetcher import _parse_response, fetch_single
 
 
 CHANNEL_MOCK = {"channel_id": "280", "name": "湖南经视", "logo": "https://example.com/logo.png"}
