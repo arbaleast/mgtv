@@ -28,7 +28,10 @@ async def _open_upstream(url: str) -> tuple[asyncio.StreamReader, asyncio.Stream
     host = parsed.netloc
     path = parsed.path or "/"
 
-    reader, writer = await asyncio.open_connection(host, 80)
+    reader, writer = await asyncio.wait_for(
+        asyncio.open_connection(host, 80),
+        timeout=10,
+    )
     request = (
         f"GET {path}?{parsed.query} HTTP/1.1\r\n"
         f"Host: {host}\r\n"
@@ -64,7 +67,7 @@ async def relay_flv(request: web.Request) -> web.StreamResponse:
 
     upstream_url = _channel_urls.get(channel_id)
     if not upstream_url:
-        raise web.HTTPNotFound(text="Channel URL not available")
+        raise web.HTTPNotFound(text="Channel not found")
 
     logger.info("→ 拉取 upstream: %s", upstream_url[:80])
     try:
@@ -89,14 +92,15 @@ async def relay_flv(request: web.Request) -> web.StreamResponse:
 
     try:
         while True:
-            data = await reader.read(8192)
+            data = await asyncio.wait_for(reader.read(8192), timeout=30)
             if not data:
                 break
             await response.write(data)
+    except asyncio.TimeoutError:
+        logger.error("流传输超时")
+        raise web.HTTPBadGateway(text="Upstream timeout")
     except ConnectionResetError:
         logger.warning("客户端断开连接")
-    except Exception as e:
-        logger.error("流传输异常: %s", e)
     finally:
         writer.close()
         try:

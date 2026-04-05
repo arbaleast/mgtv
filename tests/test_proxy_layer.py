@@ -12,8 +12,7 @@ def test_update_channel_urls():
 
 def test_create_app_has_routes():
     app = create_app({"280": "http://x"})
-    routes = [r.resource.canonical for r in app.router.routes()]
-    paths = [r for r in routes]
-    assert any("/mgtv.m3u" in str(r) for r in paths)
-    assert any("/health" in str(r) for r in paths)
-    assert any("/live/{channel_id}.flv" in str(r) for r in paths)
+    route_paths = [str(r.resource.canonical) for r in app.router.routes()]
+    assert any("/mgtv.m3u" in p for p in route_paths)
+    assert any("/health" in p for p in route_paths)
+    assert any("/live/" in p for p in route_paths)

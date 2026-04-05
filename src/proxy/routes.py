@@ -7,10 +7,11 @@ async def handle_mgtv_m3u(request: web.Request) -> web.Response:
     """提供 m3u 订阅文件。"""
     from pathlib import Path
     m3u_path = Path(__file__).parent.parent / "mgtv.m3u"
-    if m3u_path.exists():
+    try:
         content = m3u_path.read_text(encoding="utf-8")
         return web.Response(text=content, content_type="application/vnd.apple.mpegurl")
-    raise web.HTTPNotFound(text="mgtv.m3u not found")
+    except FileNotFoundError:
+        raise web.HTTPNotFound(text="mgtv.m3u not found")
 
 
 async def handle_health(request: web.Request) -> web.Response:
