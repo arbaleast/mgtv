@@ -28,7 +28,7 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Fetch live URLs
-        run: python -m src.fetcher
+        run: python scripts/update_channels.py
 
       - name: Commit and push
         run: |

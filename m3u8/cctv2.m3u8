@@ -1,0 +1,3 @@
+#EXTM3U
+#EXTINF:-1 tvg-id="cctv2" tvg-name="CCTV-2 财经" tvg-logo="https://cdn.jsdelivr.net/gh/arbaleast/mgtv@main/logo/cctv2.png" group-title="CCTV",CCTV-2 财经
+https://placeholder.example.com/live/cctv2.flv
